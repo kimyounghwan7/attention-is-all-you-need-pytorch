@@ -1,0 +1,16 @@
+services:
+  attention_container:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: attention_im:latest
+    container_name: attention_container
+    volumes:
+      - ./:/usr/src/app
+    restart: always
+    ipc: host
+    environment:
+      TZ: Asia/Seoul
+      NVIDIA_VISIBLE_DEVICES: 0
+    runtime: nvidia
+    command: tail -F /dev/null
